@@ -5,24 +5,22 @@ using UnityEngine;
 public class Respawner : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]
-    private GameObject[] Blocks = new GameObject[5];
-
-    private Vector3 StartPosition;
-    [SerializeField]
-    private int SpawnBlockCount;
-
     private const float MinRangeLimit = 3;
     private const float MaxRangeLimit = 5;
 
-    private float _IncreaseRange = 0.01f;
+    private Vector3 StartPosition;
+    [Header("Настройка генерации")]
+    [SerializeField]
+    private GameObject[] Blocks = new GameObject[5];
 
+    [SerializeField]
+    private int SpawnBlockAmount;
+
+    [SerializeField]
+    private float _IncreaseRange = 0.01f;
 
     [Range(1f, 3f)] public float MinVerticalDistanse;
     [Range(2f, 10f)] public float MaxVerticalDistanse;
-
-    public bool check = false;
-    public Animator animator;
 
     void Start()
     {
@@ -33,26 +31,16 @@ public class Respawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (check == true)
-        { 
             if (StartPosition.y - transform.parent.position.y < 5)
             {
                 Respawn();
                 IncreaseRange();
             }
-        }
-        else
-        {
-            if (animator.GetBool("Finished"))
-            {
-                check = true;
-            }
-        }
     }
     private void Respawn()
     {
-        Vector3 LastPosition = new Vector3(0,0,0);
-        for(int i=0;i< SpawnBlockCount; i++)
+        Vector3 LastPosition = Vector3.zero;
+        for(int i=0;i< SpawnBlockAmount; i++)
         {
             if (i == 0)
             {
