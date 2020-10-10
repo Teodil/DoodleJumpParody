@@ -16,13 +16,16 @@ public class PlayerControler : MonoBehaviour
     [SerializeField]
     float x;
     [SerializeField]
-    Vector3 right;
+    Vector2 right;
+    [SerializeField]
+    VerticalForse verticalForse;
 
     public bool IsDead = false;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        verticalForse = GetComponent<VerticalForse>();
     }
 
     // Update is called once per frame
@@ -30,7 +33,7 @@ public class PlayerControler : MonoBehaviour
     {
 #if UNITY_EDITOR
         right = Vector2.right * Input.GetAxis("Horizontal") * 5;
-        rigidbody.velocity = right;
+        rigidbody.velocity = right + verticalForse.VeticalForse();
 #else
         if (Input.touchCount > 0)
         {
@@ -51,7 +54,7 @@ public class PlayerControler : MonoBehaviour
                 {
                     x = touch.deltaPosition.x;
                     right = transform.right * x * Speed;
-                    rigidbody.velocity = right;
+                    rigidbody.velocity = right + verticalForse.VeticalForse();
                 }
             }
             else if( touch.phase == TouchPhase.Stationary)
@@ -68,7 +71,6 @@ public class PlayerControler : MonoBehaviour
         {
             rigidbody.velocity = Vector3.zero;
         }
-        //right = transform.right * Input.GetAxis("Horizontal") * 5;
 #endif
     }
     public void Dead()

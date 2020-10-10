@@ -21,6 +21,8 @@ public class MenuJumper : MonoBehaviour
 
     [Header("Настройка перемещения")]
     [SerializeField]
+    PlayerControler playerControl;
+    [SerializeField]
     private Transform _PlayerTransform;
     [SerializeField]
     private Transform MoveToPosition;
@@ -61,6 +63,7 @@ public class MenuJumper : MonoBehaviour
     private void StartGameJump()
     {
         _StartEvent.Invoke(_PlayerTransform, MoveToPosition.position + new Vector3(0, 0.2f, 0), time);
+        playerControl.enabled = true;
         Sound.Play();
 
     }

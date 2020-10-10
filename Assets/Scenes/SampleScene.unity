@@ -329,7 +329,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1015,7 +1014,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1403,7 +1401,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.98732233, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1481,7 +1478,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.98732233, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1559,7 +1555,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1843,7 +1838,8 @@ MonoBehaviour:
   TouchDelta: {x: 0, y: 0}
   Speed: 0.25
   x: 0
-  right: {x: 0, y: 0, z: 0}
+  right: {x: 0, y: 0}
+  verticalForse: {fileID: 0}
   IsDead: 0
 --- !u!114 &1682100768
 MonoBehaviour:
@@ -2086,7 +2082,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 53d346fcdcbbc1c4fa7687c243f53513, type: 3}
   - {fileID: 8300000, guid: 730e9745c8ab8a94bbc547d096e756a1, type: 3}
   - {fileID: 8300000, guid: 2d43ee4e7f6f6f34cb66e82787dcd5de, type: 3}
-  JumpForse: 100
+  JumpForse: 20
   _StartEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2102,6 +2098,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   IsGameStarted: 0
+  playerControl: {fileID: 1682100767}
   _PlayerTransform: {fileID: 1682100766}
   MoveToPosition: {fileID: 374651045}
   time: 1.75
