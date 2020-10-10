@@ -33,36 +33,25 @@ public class VerticalForse : MonoBehaviour
             Fall();
         }
     }
-    public Vector2 VeticalForse()
+    private void Jump()
     {
-        if (_IsJumping)
-        {
-           return Jump();
-        }
-        else
-        {
-            return Fall();
-        }
-    }
-    private Vector2 Jump()
-    {
+        rigidbody.AddForce(new Vector2(0, JumpForse) * (TimerLimit - Timer));
         Timer += Time.deltaTime;
         if (Timer > TimerLimit)
         {
             Timer = 0;
             _IsJumping = false;
         }
-        return new Vector2(0, JumpForse) * (TimerLimit - Timer);
     }
-    private Vector2 Fall()
+    private void Fall()
     {
         Timer += Time.deltaTime;
-        return new Vector2(0, FallForse) * Timer;
+        rigidbody.AddForce(new Vector2(0, FallForse) * Timer);
     }
     public void StartJump(float _JumpForse)
     {
         Timer = 0;
-        rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0);
+        rigidbody.velocity = new Vector2(0, 0);
         _IsJumping = true;
         JumpForse = _JumpForse;
     }
