@@ -329,7 +329,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1015,7 +1014,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1086,10 +1084,11 @@ MonoBehaviour:
   - {fileID: 1123883067788513899, guid: cd9fca700eefd1140ac38ebf1bf0137c, type: 3}
   - {fileID: 7224534007872971471, guid: 1c03e857c7c0b8d4c8c9353d078d984a, type: 3}
   - {fileID: 2881028175004264976, guid: d881b11bffcf331438854620eebaf363, type: 3}
-  SpawnBlockAmount: 20
-  _IncreaseRange: 0.01
+  SpawnBlockCount: 10
   MinVerticalDistanse: 1
   MaxVerticalDistanse: 3
+  check: 0
+  animator: {fileID: 1651988583}
 --- !u!1 &1006851188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1402,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.98732233, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1481,7 +1479,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.98732233, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1559,7 +1556,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

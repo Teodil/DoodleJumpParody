@@ -28,10 +28,6 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR
-        right = Vector2.right * Input.GetAxis("Horizontal") * 5;
-        rigidbody.velocity = right;
-#else
         if (Input.touchCount > 0)
         {
             touch = Input.GetTouch(0);
@@ -69,7 +65,6 @@ public class PlayerControler : MonoBehaviour
             rigidbody.velocity = Vector3.zero;
         }
         //right = transform.right * Input.GetAxis("Horizontal") * 5;
-#endif
     }
     public void Dead()
     {

@@ -25,6 +25,7 @@ public class Respawner : MonoBehaviour
     void Start()
     {
         StartPosition = GameObject.FindGameObjectWithTag("Start").transform.position;
+        //Respawn();
     }
 
     // Update is called once per frame
@@ -32,8 +33,8 @@ public class Respawner : MonoBehaviour
     {
             if (StartPosition.y - transform.parent.position.y < 5)
             {
-            Respawn();
-            IncreaseRange();
+                Respawn();
+                IncreaseRange();
             }
     }
     private void Respawn()
