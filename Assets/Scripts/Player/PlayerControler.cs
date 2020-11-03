@@ -12,67 +12,79 @@ public class PlayerControler : MonoBehaviour
     Vector2 TouchDelta;
     Touch touch;
     [SerializeField]
-    float Speed = 50f;
-    [SerializeField]
     float x;
     [SerializeField]
+    float _Speed;
+    [SerializeField]
     Vector3 right;
-
-    public bool IsDead = false;
+    [SerializeField]
+    Vector3 up;
+    [SerializeField]
+    VerticalForse verticalForse;
+    [SerializeField]
+    public bool isDead {private set;  get; }
+    [SerializeField]
+    public bool gameStarted { private set ; get; }
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        isDead = false;
+        gameStarted = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR
-        right = Vector2.right * Input.GetAxis("Horizontal") * 5;
-        rigidbody.velocity = right;
-#else
-        if (Input.touchCount > 0)
+
+        if (gameStarted)
         {
-            touch = Input.GetTouch(0);
-            if(touch.phase == TouchPhase.Began)
+            right = Vector2.right * Input.GetAxis("Horizontal") * 5;
+            rigidbody.velocity = right + verticalForse.GetVerticalForse();
+            /*if (Input.touchCount > 0)
             {
-                rigidbody.velocity = Vector3.zero;
-                StartPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            }
-            else if (touch.phase == TouchPhase.Moved)
-            {
-                /*TouchDelta = Camera.main.ScreenToWorldPoint(touch.position);
-                x = TouchDelta.x - StartPosition.x;
-                right = transform.right * x * Speed;
-                rigidbody.velocity = right;
-                StartPosition = TouchDelta;*/
-                if (!IsDead)
+                touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began)
                 {
-                    x = touch.deltaPosition.x;
-                    right = transform.right * x * Speed;
-                    rigidbody.velocity = right;
+                    StartPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                }
+                else if (touch.phase == TouchPhase.Moved)
+                {
+                    if (!isDead)
+                    {
+                        x = touch.deltaPosition.x;
+                        right = transform.right * x * _Speed;
+                        rigidbody.velocity = right + verticalForse.GetVerticalForse();
+                    }
+                }
+                else if (touch.phase == TouchPhase.Stationary)
+                {
+                    rigidbody.velocity = right + verticalForse.GetVerticalForse();
+
+                }
+                else if (touch.phase == TouchPhase.Ended)
+                {
+                    //rigidbody.velocity = transform.right * new Vector2(0, rigidbody.velocity.y);
+                    x = 0;
                 }
             }
-            else if( touch.phase == TouchPhase.Stationary)
+            else
             {
-                rigidbody.velocity = right;
-
-            }
-            else if(touch.phase == TouchPhase.Ended)
-            {
-                //rigidbody.velocity = transform.right * new Vector2(0, rigidbody.velocity.y);
-            }
+                right *= x;
+                rigidbody.velocity = right + verticalForse.GetVerticalForse();
+            }*/
         }
         else
         {
-            rigidbody.velocity = Vector3.zero;
+            rigidbody.velocity = verticalForse.GetVerticalForse();
         }
-        //right = transform.right * Input.GetAxis("Horizontal") * 5;
-#endif
     }
     public void Dead()
     {
-        IsDead = true;
+        isDead = true;
+    }
+    public void StartGame()
+    {
+        gameStarted = true;
     }
 }

@@ -6,25 +6,25 @@ public class CameraFollow : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    GameObject Player;
+    private PlayerControler _player;
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        _player = (PlayerControler)FindObjectOfType(typeof(PlayerControler));
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!Player.GetComponent<PlayerControler>().IsDead)
+        if (!_player.isDead)
         {
-            if (transform.position.y < Player.transform.position.y)
+            if (transform.position.y < _player.transform.position.y)
             {
-                transform.position = new Vector3(transform.position.x, Player.transform.position.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x, _player.transform.position.y, transform.position.z);
             }
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, Player.transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, _player.transform.position.y, transform.position.z);
         }
     }
 }

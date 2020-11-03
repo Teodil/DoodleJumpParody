@@ -22,7 +22,7 @@ public class VerticalForse : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (_IsJumping)
         {
@@ -32,26 +32,41 @@ public class VerticalForse : MonoBehaviour
         {
             Fall();
         }
-    }
-    private void Jump()
+    }*/
+    public Vector3 GetVerticalForse()
     {
-        rigidbody.AddForce(new Vector2(0, JumpForse) * (TimerLimit - Timer));
+        if (_IsJumping)
+        {
+            return Jump();
+        }
+        else
+        {
+            return Fall();
+        }
+    }
+    private Vector3 Jump()
+    {
+        //rigidbody.AddForce(new Vector2(0, JumpForse) * (TimerLimit - Timer));
         Timer += Time.deltaTime;
         if (Timer > TimerLimit)
         {
             Timer = 0;
             _IsJumping = false;
+            return Fall();
         }
+        //Debug.Log("Прыжок вектор " + new Vector3(0, FallForse, 0) * (TimerLimit - Timer));
+        return new Vector3(0, JumpForse, 0) * (TimerLimit - Timer);
     }
-    private void Fall()
+    private Vector3 Fall()
     {
         Timer += Time.deltaTime;
-        rigidbody.AddForce(new Vector2(0, FallForse) * Timer);
+        //rigidbody.AddForce(new Vector2(0, FallForse) * Timer);
+        //Debug.Log("Падение вектор " + new Vector3(0, FallForse, 0));
+        return new Vector3(0, FallForse, 0) * Timer; 
     }
     public void StartJump(float _JumpForse)
     {
         Timer = 0;
-        rigidbody.velocity = new Vector2(0, 0);
         _IsJumping = true;
         JumpForse = _JumpForse;
     }

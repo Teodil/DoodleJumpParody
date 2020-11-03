@@ -27,7 +27,7 @@ public class GameControl : MonoBehaviour
     private IEnumerator MoveObjetToPosition(Transform WhoMove, Vector3 MoveTo, float TimeToMove)
     {
         if (WhoMove.gameObject.TryGetComponent(out Rigidbody2D rigidbody)) {
-            rigidbody.isKinematic = true;
+            rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
         }
         Vector3 startPosition = WhoMove.position;
         for(float i = 0; i < 1; i += Time.deltaTime / TimeToMove)
@@ -37,7 +37,7 @@ public class GameControl : MonoBehaviour
         }
         if (WhoMove.gameObject.TryGetComponent(out Rigidbody2D rigidbody2))
         {
-            rigidbody2.isKinematic = false;
+            rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         FinishMoving.Invoke();
         FinishMoving.RemoveAllListeners();

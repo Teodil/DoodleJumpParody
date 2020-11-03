@@ -127,7 +127,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 53d346fcdcbbc1c4fa7687c243f53513, type: 3}
   - {fileID: 8300000, guid: 730e9745c8ab8a94bbc547d096e756a1, type: 3}
   - {fileID: 8300000, guid: 2d43ee4e7f6f6f34cb66e82787dcd5de, type: 3}
-  JumpForse: 200
+  JumpForse: 20
 --- !u!82 &-8586208361011467129
 AudioSource:
   m_ObjectHideFlags: 0

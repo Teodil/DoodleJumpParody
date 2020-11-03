@@ -7,11 +7,9 @@ public class Destroyer : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    GameObject gameObject;
-    [SerializeField]
     Camera camera;
 
-    public UnityEvent dead;
+    public UnityEvent Dead;
 
     void Start()
     {
@@ -34,12 +32,7 @@ public class Destroyer : MonoBehaviour
         }
         else
         {
-            dead.Invoke();
+            Dead.Invoke();
         }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Collision Дестроер коснулся " + collision.gameObject.name);
-        Destroy(collision.gameObject);
     }
 }

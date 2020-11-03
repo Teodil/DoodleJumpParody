@@ -21,8 +21,12 @@ public class Score : MonoBehaviour
     {
         if (transform.parent.hasChanged)
         {
-            score = Convert.ToInt32(StartPoint.y - transform.parent.position.y) * -1;
-            scoreText.text = score.ToString();
+            var _player = (PlayerControler)FindObjectOfType(typeof(PlayerControler));
+            if (!_player.isDead)
+            {
+                score = Convert.ToInt32(StartPoint.y - transform.parent.position.y) * -1;
+                scoreText.text = score.ToString();
+            }
         }
     }
 }
